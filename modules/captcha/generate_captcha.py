@@ -1,5 +1,5 @@
 import random
-from aritmetica import (sumar, restar, multiplicar, dividir)
+from aritmetica import sumar, restar, multiplicar, dividir
 
 '''
 Captcha: para terminar el proceso de registro se debe ingresar un captcha
@@ -60,4 +60,3 @@ def compare_result(user_result, result):
         print('Hasta la próxima.')
         return
     generate_captcha()
-
