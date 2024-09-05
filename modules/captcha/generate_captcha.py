@@ -1,5 +1,10 @@
 import random
-from aritmetica import sumar, restar, multiplicar, dividir
+from ..aritmetica.sumar import sumar
+from ..aritmetica.restar import restar
+from ..aritmetica.sumar_n import sumar_n
+from ..aritmetica.dividir import dividir
+from ..aritmetica.multiplicar import multiplicar
+from ..aritmetica.promedio_n import promedio_n
 
 '''
 Captcha: para terminar el proceso de registro se debe ingresar un captcha

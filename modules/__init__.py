@@ -26,14 +26,6 @@ from .meeting.deleteMeetingPoint import deleteMeetingPoint
 from .meeting.getMeetingPoint import getMeetingPoints
 from .meeting.updateMeetingPoint import updateMeetingPoint
 
-#Import desde aritmetica
-from .aritmetica.sumar import sumar
-from .aritmetica.restar import restar
-from .aritmetica.multiplicar import multiplicar
-from .aritmetica.dividir import dividir
-from .aritmetica.sumar_n import sumar_n
-from .aritmetica.promedio_n import promedio_n
-
 #Import desde captcha
 from .captcha.generate_captcha import generate_captcha
 

@@ -3,7 +3,12 @@ utilice el módulo aritmetica.py y contenga una funcion test por cada funcion
 del modulo aritmetica, es decir, test_sumar, test_restar, …. con al menos 3
 assert cada función '''
 
-from aritmetica import sumar, restar, multiplicar, dividir, sumar_n, promedio_n
+from modules.aritmetica.sumar import sumar
+from modules.aritmetica.sumar_n import sumar_n
+from modules.aritmetica.restar import restar
+from modules.aritmetica.dividir import dividir
+from modules.aritmetica.multiplicar import multiplicar
+from modules.aritmetica.promedio_n import promedio_n
 
 def test_sumar():
     resultado = sumar(2.00, 3.00)    
