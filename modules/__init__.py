@@ -10,11 +10,8 @@ from .contact.deleteContact import deleteContact
 from .contact.getContacts import getContacts
 from .contact.updateContact import updateContact
 
-# Import desde User
-from .users.createUser import createUser
-from .users.deleteUser import deleteUser
-from .users.getUsers import getUsers
-from .users.updateUser import updateUser
+#Register User
+from .register.registerForm import registerForm
 
 # Import desde Address
 from .address.createAddress import createAddress
