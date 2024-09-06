@@ -1,7 +1,9 @@
 from modules import (createBook, createUser, createContact, 
                      deleteBook, deleteContact, deleteUser, 
                      getContacts, getBooks, getUsers,
-                     updateBook, updateContact, updateUser, createMeetingPoint, getMeetingPoints, updateMeetingPoint)
+                     updateBook, updateContact, updateUser,
+                     createMeetingPoint, getMeetingPoints, updateMeetingPoint,
+                     generate_captcha)
 
 def main():
     while True:
@@ -31,7 +33,7 @@ def main():
                 print("-----Se creó el usuario correctamente-----")
                 print("------------------------------------------")
         elif choice == '2':
-            createContact()
+            generate_captcha()
         elif choice == '3':
             createBook()
         elif choice == '4':
