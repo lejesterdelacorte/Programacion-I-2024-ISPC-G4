@@ -12,13 +12,15 @@ def escribir_contador(contador):
     with open("contador_fallos.txt", "w") as file:
         file.write(str(contador))
 
-def login(user, password):
+def login():
+    user = input("Ingrese su email: ")
+    password = input("Ingrese su contraseña: ")
     db_instance = DatabaseConnection()
     connection = db_instance.get_connection()
 
     cursor = connection.cursor()
     cursor.execute('''
-        SELECT id_usuario, nombre, apellido, email, password, id_domicilio
+        SELECT nombre_usuario, nombre, apellido, email, id_domicilio
         FROM usuario
         WHERE email = %s AND password = %s;
         ''', (user, password))
@@ -30,9 +32,9 @@ def login(user, password):
         fecha_ingreso = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         with open("ingresos.txt", "a") as file:
             file.write(f"{nombre_usuario} - {fecha_ingreso}\n")
-        return "Usuario ingreso correcto"
+        return True
     else:
         contador_fallos = leer_contador()
         contador_fallos += 1
         escribir_contador(contador_fallos)
-        return f"Usuario o contraseña incorrecta. Intentos fallidos: {contador_fallos}"
+        return False

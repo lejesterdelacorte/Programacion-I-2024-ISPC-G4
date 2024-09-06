@@ -3,12 +3,53 @@ from modules import (createBook, createUser, createContact,
                      getContacts, getBooks, getUsers,
                      updateBook, updateContact, updateUser,
                      createMeetingPoint, getMeetingPoints, updateMeetingPoint,
-                     generate_captcha)
+                     generate_captcha, login, resetPassword)
 
 def main():
-    while True:
-        print('MENU PRINCIPAL')
+
+    isUserLogged = False
+    isMenuLogin = True
+    showResetPassword = False
+
+    while isMenuLogin:
+        print('LOGIN USUARIO')
+        print('0. Ingresar usuario')
         print('1. Crear Usuario')
+        if showResetPassword:
+            print('2. Resetear contraseña')
+
+        choice = input("Selecciona una opción: ")
+        if choice == '0':
+            print("Ingresar capcha")
+            generate_captcha()
+            if login():
+                print("Usuario logueado correctamente")
+                isUserLogged = True
+                isMenuLogin = False
+            else:
+                print("Usuario o contraseña incorrectos")
+                showResetPassword = True
+            
+
+        elif choice == '1':
+            if createUser():
+                print("------------------------------------------")
+                print("-----Se creó el usuario correctamente-----")
+                print("------------------------------------------")
+        
+        elif choice == '2' and showResetPassword:
+            resetPassword()
+            showResetPassword = False
+
+        else:
+            print("Opción no válida, por favor intenta de nuevo.")
+            
+        
+            
+
+    while isUserLogged:
+        print('MENU PRINCIPAL')
+        
         print('2. Crear Contacto')
         print('3. Crear Libro')
         print('4. Eliminar Usuario')
@@ -25,42 +66,36 @@ def main():
         print('15. Actualizar Punto de Encuentro')
         print('16. Salir del Menu')
 
-        choice = input("Selecciona una opción: ")
+        MenuChoice = input("Selecciona una opción: ")
 
-        if choice == '1':
-            if createUser():
-                print("------------------------------------------")
-                print("-----Se creó el usuario correctamente-----")
-                print("------------------------------------------")
-        elif choice == '2':
-            generate_captcha()
-        elif choice == '3':
+        
+        if MenuChoice == '3':
             createBook()
-        elif choice == '4':
+        elif MenuChoice == '4':
             deleteUser()
-        elif choice == '5':
+        elif MenuChoice == '5':
             deleteContact()
-        elif choice == '6':
+        elif MenuChoice == '6':
             deleteBook()
-        elif choice == '7':
+        elif MenuChoice == '7':
             getUsers()
-        elif choice == '8':
+        elif MenuChoice == '8':
             print(getContacts())
-        elif choice == '9':
+        elif MenuChoice == '9':
             print(getBooks())
-        elif choice == '10':
+        elif MenuChoice == '10':
             updateUser()
-        elif choice == '11':
+        elif MenuChoice == '11':
             updateContact()
-        elif choice == '12':
+        elif MenuChoice == '12':
             updateBook()
-        elif choice == '13':
+        elif MenuChoice == '13':
             createMeetingPoint()
-        elif choice == '14':
+        elif MenuChoice == '14':
             getMeetingPoints()
-        elif choice == '15':
+        elif MenuChoice == '15':
             updateMeetingPoint()
-        elif choice == '16':
+        elif MenuChoice == '16':
             print("Saliendo del programa...")
             break
         else:
