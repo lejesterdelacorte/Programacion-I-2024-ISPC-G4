@@ -1,6 +1,6 @@
-# Proyecto Integrador - ISPC - Tecnicatura de Ciencia de Datos y Machine Learning.
+# Proyecto Integrador - ISPC - Módulo Innovación en Gestión de Datos
 
-## Segunda Evidencia.
+## Primera Evidencia.
 
 ### Integrantes
 1. Integrante 1:
@@ -26,9 +26,7 @@
 ### Proyecto Elegido: Sharing Books.
 #### Descripción:
 La aplicación que desarrollaremos en el presente proyecto permite a dos usuarios intercambiar libros, fomentando la creación de una comunidad de lectores promoviendo la interacción social y el intercambio cultural a través de la literatura.
-El intercambio se hará en una ubicación específica, donde los usuarios se pongan de acuerdo para encontrarse. Se perimitirá intercambio de uno a uno, y se llevará registro de ese intercambio a través de ua hora y fecha. 
-De los usuarios, tendremos registros sobre sus datos personales, incluyendo nombre y apellido, direccion, numero de contacto y un correo electrónico.
-De los libros.
+El intercambio se hará en una ubicación específica, donde los usuarios se pongan de acuerdo para encontrarse. Se permitirá intercambio de uno a uno, y se llevará registro de ese intercambio a través de una hora y fecha. 
 
 ## Entrega Final
 
@@ -45,24 +43,19 @@ De los libros.
 			2. **UpdateBook.py**: Archivo donde se encuentra la función que se encarga de la modificación de entidad libro.
 			3. **GetBooks.py**: Archivo donde se encuentra la función que se encarga de la obtención de entidades libros.
 			4. **DeleteBook.py**: Archivo donde se encuentra la función que se encarga del borrado de entidad libros.
-		4. **Carpeta Swap**: Directorio con archivos para entidad "intercambio".
-			1. **CreateSwap.py**: Archivo donde se encuentra la función que se encarga de la creación de entidad intercambio.
-			2. **UpdateSwap.py**: Archivo donde se encuentra la función que se encarga de la modificación de entidad intercambio.
-			3. **GetSwaps.py**: Archivo donde se encuentra la función que se encarga de la obtención de entidades intercambio.
-			4. **DeleteSwap.py**: Archivo donde se encuentra la función que se encarga del borrado de entidad intercambio.
-		5. **Carpeta Meeting**: Directorio con archivos para entidad "punto de encuentro".
+		4. **Carpeta Meeting**: Directorio con archivos para entidad "punto de encuentro".
 			1. **CreateMeeting.py**: Archivo donde se encuentra la función que se encarga de la creación de entidad punto de encuentro.
 			2. **UpdateMeeting.py**: Archivo donde se encuentra la función que se encarga de la modificación de entidad punto de encuentro.
 			3. **GetMeeting.py**: Archivo donde se encuentra la función que se encarga de la obtención de entidades puntos de encuentro.
 			4. **DeleteMeeting.py**: Archivo donde se encuentra la función que se encarga del borrado de entidad punto de encuentro.
-		6. **Carpeta Users**: Directorio con archivos para entidad "usuarios".
-			1. **CreateUser.py**: Archivo donde se encuentra la función que se encarga de la creación de entidad usuario.
-			2. **UpdateUser.py**: Archivo donde se encuentra la función que se encarga de la modificación de entidad usuario.
-			3. **GetUser.py**: Archivo donde se encuentra la función que se encarga de la obtención de entidades usuarios.
-			4. **DeleteUser.py**: Archivo donde se encuentra la función que se encarga del borrado de entidad usuario.
-		7. **Carpeta Utils**: Directorio con archivos para utilizaciones generales.
+		5. **Carpeta Register**: Directorio con el formulario de registro.
+		6. **Carpeta Login**: Directorio con el formulario y lógica de logueo.
+		7. **Carpeta Aritmética**: Directorio con los archivos de las funciones de cálculo aritmético.
+		9. **Carpeta Utils**: Directorio con archivos para utilizaciones generales.
 			1. **DateMask.py**: Archivo donde se encuentra la función que se encarga de crear y validar la fecha.
 			2. **dBConnection.py**: Archivo donde se encuentra la función que se encarga crear el patrón Singleton para la conexión de BBDD.
+			3. **passMask.py**: Archivo donde se encuentra la función que se encarga de crear y validar la contraseña.
+		10. **Archivo test.py**: Archivo donde se encuentra la prueba de funcionamiento del módulo de aritmética.
 	2. **Carpeta .venv:** Carpeta que carga los elementos necesarios para interpretar el lenguaje de python, conocido como *"Virtual Enviroment"*.
 	3. **DB**: Carpeta donde se encuentran todos los elementos de la BBDD.
 	4. **Archivo .env**: Archivo de variables de ambiente, necesario para conectar con la BBDD.
@@ -74,10 +67,13 @@ Luego de descargar el repositorio, debemos hacer una instalación de ciertas dep
 	 ` pip install prompt_toolkit `
 	 ` pip install python-dotenv ` 
 	 ` pip install mysql-connector-python `
+	 ` pip install pymysql`
 Con estos comandos ya podremos ejecutarlo.
 
 ### Utilización de la Aplicación.
 
-Para utilizar la aplicación, ejecutar desde main.py
-Se desplegara en consola un menu numerico.
-Elegir las opciones que uno quiera utilizar a medida que avanza por el proceso.
+#### Para utilizar la aplicación: 
+- Ejecutar desde main.py
+- Se desplegará en consola un menu numérico de logueo, elija la opción mas conveniente.
+- Luego de loguearse, ingresará al menú de la aplicación propiamente dicho.
+- Elegir las opciones que uno quiera utilizar a medida que avanza por el proceso.
