@@ -22,3 +22,13 @@ from .meeting.createMeetingPoint import createMeetingPoint
 from .meeting.deleteMeetingPoint import deleteMeetingPoint
 from .meeting.getMeetingPoint import getMeetingPoints
 from .meeting.updateMeetingPoint import updateMeetingPoint
+
+#Import desde captcha
+from .captcha.generate_captcha import generate_captcha
+
+#Import desde login
+from .login.login import login
+
+#Import desde resetPassword
+from .resetPassword.resetPassword import resetPassword
+

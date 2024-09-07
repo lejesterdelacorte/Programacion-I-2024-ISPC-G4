@@ -1,52 +1,87 @@
-from modules import (createBook, registerForm, createContact, 
-                     deleteBook, deleteContact, 
-                     getContacts, getBooks, 
-                     updateBook, updateContact, createMeetingPoint, getMeetingPoints, updateMeetingPoint)
+from modules import (createBook, deleteBook, createContact, 
+                     deleteContact,
+                     getContacts, getBooks,
+                     updateBook, updateContact,
+                     createMeetingPoint, getMeetingPoints, updateMeetingPoint,
+                     login, resetPassword, registerForm)
 
 def main():
-    while True:
-        print('MENU PRINCIPAL')
-        print('1. Crear Usuario')
-        print('2. Crear Contacto')
-        print('3. Crear Libro')
-        print('4. Eliminar Contacto')
-        print('5. Eliminar Libro' )
-        print('6. Obtener Contactos')
-        print('7. Obtener Libros')
-        print('8. Actualizar Contacto')
-        print('9. Actualizar Libro')
-        print('10. Crear Punto de Encuentro')
-        print('11. Obtener Punto de Encuentro')
-        print('12. Actualizar Punto de Encuentro')
-        print('13. Salir del Menu')
 
+    isUserLogged = False
+    isMenuLogin = True
+    showResetPassword = False
+
+    while isMenuLogin:
+        print('--- SHARING BOOKS - LOGIN USUARIO ---')
+        print('1. Ingresar usuario')
+        print('2. Crear Usuario')
+        if showResetPassword:
+            print('3. Resetear contraseña')
+        print('0. Salir')
+        
         choice = input("Selecciona una opción: ")
-
         if choice == '1':
-            registerForm()
+            fails, logged = login()
+            if logged:
+                print("Usuario logueado correctamente")
+                isUserLogged = True
+                isMenuLogin = False
+            else:
+                print("Usuario o contraseña incorrectos")
+                print(f"Usted lleva {fails} intentos fallidos de ingreso.\n Recuerde que al cuarto intento se bloquea...")
+                showResetPassword = True
         elif choice == '2':
+            registerForm()
+        
+        elif choice == '3' and showResetPassword:
+            resetPassword()
+            showResetPassword = False
+        elif choice == '0':
+            print("Saliendo del programa...")
+            break
+        else:
+            print("Opción no válida, por favor intenta de nuevo.")
+
+    while isUserLogged:
+        print('--- SHARING BOOKS - MENU PRINCIPAL ---')
+        print('1. Crear Contacto')
+        print('2. Crear Libro')
+        print('3. Eliminar Contacto')
+        print('4. Eliminar Libro' )
+        print('5. Obtener Contactos')
+        print('6. Obtener Libros')
+        print('7. Actualizar Contacto')
+        print('8. Actualizar Libro')
+        print('9. Crear Punto de Encuentro')
+        print('10. Obtener Punto de Encuentro')
+        print('11. Actualizar Punto de Encuentro')
+        print('12. Salir del Menu')
+
+        MenuChoice = input("Selecciona una opción: ")
+
+        if MenuChoice == '1':
             createContact()
-        elif choice == '3':
+        elif MenuChoice == '2':
             createBook()
-        elif choice == '4':
+        elif MenuChoice == '3':
             deleteContact()
-        elif choice == '5':
+        elif MenuChoice == '4':
             deleteBook()
-        elif choice == '6':
+        elif MenuChoice == '5':
             print(getContacts())
-        elif choice == '7':
+        elif MenuChoice == '6':
             print(getBooks())
-        elif choice == '8':
+        elif MenuChoice == '7':
             updateContact()
-        elif choice == '9':
+        elif MenuChoice == '8':
             updateBook()
-        elif choice == '10':
+        elif MenuChoice == '9':
             createMeetingPoint()
-        elif choice == '11':
+        elif MenuChoice == '10':
             getMeetingPoints()
-        elif choice == '12':
+        elif MenuChoice == '11':
             updateMeetingPoint()
-        elif choice == '13':
+        elif MenuChoice == '12':
             print("Saliendo del programa...")
             break
         else:
