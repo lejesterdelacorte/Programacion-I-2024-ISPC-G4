@@ -2,10 +2,12 @@ from datetime import datetime
 import mysql.connector
 from modules.utils.dateMask import input_birthdate
 import mysql.connector
+import pickle
 
 from modules.utils.dBConnection import DatabaseConnection
 from modules.address.updateAddress import updateAddress
 from modules.register.registerForm import registerForm
+
 
 class Usuario:
     def __init__(self, username=None, password=None, email=None):
@@ -139,4 +141,15 @@ class Usuario:
             connection.rollback()
 
     def __str__(self):
-        return f"Usuario(id={self.id}, username={self.username}, email={self.email})"
+        return f"Usuario(username={self.username}, email={self.email})"
+
+    def guardar_usuarios(usuarios, filename='usuarios.ispc'):
+        with open(filename, 'wb') as file:
+            pickle.dump(usuarios, file)
+
+    def cargar_usuarios(filename='usuarios.ispc'):
+        try:
+            with open(filename, 'rb') as file:
+                return pickle.load(file)
+        except FileNotFoundError:
+            return []

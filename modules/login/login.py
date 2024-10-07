@@ -2,16 +2,20 @@ from ..utils.dBConnection import DatabaseConnection
 from datetime import datetime
 from prompt_toolkit import prompt
 from evidencia2.acceso import Acceso
+from evidencia2.usuario import Usuario
+import pickle
+
 
 def leer_contador():
     try:
         with open("contador_fallos.txt", "r") as file:
-            return int(file.read())
-    except FileNotFoundError:
+            content = file.read().strip()
+            return int(content) if content else 0
+    except (FileNotFoundError, ValueError):
         return 0
 
 def escribir_contador(contador):
-    with open("contador_fallos.txt", "w") as file:
+    with open("logs.txt", "w") as file:
         file.write(str(contador))
 
 def login():
@@ -34,6 +38,8 @@ def login():
         fecha_ingreso = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         access = Acceso(fecha_ingreso, None, user_data[5])
         access.createAccess()
+        with open("acceso.ispc", 'wb') as file:
+            pickle.dump(access, file)
 
         
         with open("ingresos.txt", "a") as file:
@@ -44,6 +50,12 @@ def login():
     else:
         contador_fallos = leer_contador()
         contador_fallos += 1
-        escribir_contador(contador_fallos)
         login = False
+        logs = {
+            "Intentos fallidos": contador_fallos,
+            "Usuario": username,
+            "Fecha": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "password": password
+        }
+        escribir_contador(logs)
         return contador_fallos, login

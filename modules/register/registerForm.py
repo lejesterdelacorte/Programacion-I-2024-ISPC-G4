@@ -4,6 +4,7 @@ from ..utils.dateMask import input_birthdate
 from ..utils.passMask import input_password
 from ..address.createAddress import createAddress
 from ..captcha.generate_captcha import generate_captcha
+import pickle
 
 '''
 Esta función se encargará del registro de los usuarios.
@@ -51,17 +52,33 @@ def registerForm():
                 ''', (username, firstname, lastname, birthdate, phone, email, password, address_id, ced_id))
             connection.commit()
             
+            # Serializar los datos del usuario en un archivo binario
+            usuario_data = {
+                'username': username,
+                'firstname': firstname,
+                'lastname': lastname,
+                'birthdate': birthdate,
+                'phone': phone,
+                'email': email,
+                'password': password,
+                'address_id': address_id,
+                'ced_id': ced_id
+            }
+            with open("usuario.ispc", 'wb') as file:
+                pickle.dump(usuario_data, file)
+            
+            # Guardar los datos del usuario en un archivo de texto
             with open('usuariosCreados.txt', 'a') as file:
                 file.write(f'Usuario creado:\n'
-                        f'Nickname: {username}\n'
-                        f'Cedula:{ced_id}\n'  
-                        f'Nombre: {firstname}\n'
-                        f'Apellido: {lastname}\n'
-                        f'Telefono: {phone}\n'
-                        f'Email: {email}\n'
-                        f'Fecha de Nacimiento: {birthdate}\n'
-                        f'Domicilio: Calle {street}, Altura {street_number}, Ciudad {city}, País {country}\n'
-                        f'Creado correctamente.\n\n')
+                           f'Nickname: {username}\n'
+                           f'Cedula: {ced_id}\n'  
+                           f'Nombre: {firstname}\n'
+                           f'Apellido: {lastname}\n'
+                           f'Telefono: {phone}\n'
+                           f'Email: {email}\n'
+                           f'Fecha de Nacimiento: {birthdate}\n'
+                           f'Domicilio: Calle {street}, Altura {street_number}, Ciudad {city}, País {country}\n'
+                           f'Creado correctamente.\n\n')
             print("Usuario registrado correctamente.")
             
         except pymysql.IntegrityError as e:
