@@ -1,0 +1,22 @@
+Usuario creado:
+Nickname: asef
+Cedula:231313
+Nombre: lkasdj
+Apellido: aksdja
+Telefono: 213
+Email: niasda@gmail.com
+Fecha de Nacimiento: 2022-03-04
+Domicilio: Calle asd, Altura 123, Ciudad asd, País asd
+Creado correctamente.
+
+Usuario creado:
+Nickname: Nico
+Cedula:22
+Nombre: asd
+Apellido: aa
+Telefono: 2
+Email: asd@gmal.com
+Fecha de Nacimiento: 2022-03-01
+Domicilio: Calle asd, Altura 2, Ciudad asd, País asd
+Creado correctamente.
+

@@ -3,8 +3,8 @@ from modules import (createBook, deleteBook, createContact,
                      getContacts, getBooks,
                      updateBook, updateContact,
                      createMeetingPoint, getMeetingPoints, updateMeetingPoint,
-                     login, resetPassword, registerForm)
-
+                     login, resetPassword)
+from evidencia2.usuario import Usuario
 def main():
 
     isUserLogged = False
@@ -31,7 +31,8 @@ def main():
                 print(f"Usted lleva {fails} intentos fallidos de ingreso.\n Recuerde que al cuarto intento se bloquea...")
                 showResetPassword = True
         elif choice == '2':
-            registerForm()
+            user = Usuario()
+            user.createUser()
         
         elif choice == '3' and showResetPassword:
             resetPassword()

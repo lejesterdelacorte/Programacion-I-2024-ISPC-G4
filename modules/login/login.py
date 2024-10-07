@@ -1,6 +1,7 @@
 from ..utils.dBConnection import DatabaseConnection
 from datetime import datetime
 from prompt_toolkit import prompt
+from evidencia2.acceso import Acceso
 
 def leer_contador():
     try:
@@ -21,7 +22,7 @@ def login():
 
     cursor = connection.cursor()
     cursor.execute('''
-        SELECT nombre_usuario, nombre, apellido, e_mail, id_domicilio
+        SELECT  nombre_usuario, nombre, apellido, e_mail, id_domicilio, ID_usuario
         FROM usuario
         WHERE nombre_usuario = %s AND password = %s;
         ''', (username, password))
@@ -31,9 +32,14 @@ def login():
     if user_data:
         nombre_usuario = user_data[1]
         fecha_ingreso = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        access = Acceso(fecha_ingreso, None, user_data[5])
+        access.createAccess()
+
+        
         with open("ingresos.txt", "a") as file:
             file.write(f"{nombre_usuario} - {fecha_ingreso}\n")
         login = True
+
         return 0, login
     else:
         contador_fallos = leer_contador()
