@@ -36,7 +36,7 @@ try:
     plt.savefig('graficoDispersión.png')
     plt.show()
 
-    #Gráfico circular
+    #Gráfico circular 
 
     plt.figure(figsize=(8, 8))
     plt.pie(totalMonthly.values, labels=totalMonthly.index, autopct='%1.1f%%', startangle=90, colors=plt.cm.Paired.colors)
