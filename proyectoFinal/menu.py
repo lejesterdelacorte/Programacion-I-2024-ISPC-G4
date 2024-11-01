@@ -1,5 +1,6 @@
 from crudUsuarios import crudUsuarios
 from gestionAccesos import gestionAccesos
+from DataScience import cargar_datos_pluviales, analizar_ano, analizar_mes, graficar_ano, graficar_mes
 from ordenamiento import bubbleSort, sortUsersPy
 from consultasSQL import mostrar_libros_por_genero, insertar_usuario, actualizar_telefono_usuario, eliminar_libro, consultar_join_usuario_libro, consultar_join_punto_encuentro
 
@@ -18,7 +19,8 @@ def mainMenu():
         print("6. Ingresar al Sistema")
         print("7. Ordenamiento de usuarios")
         print("8. Conexión con base de datos de 'Sharing books'")
-        print("9. Salir")
+        print("9. Analisis de datos")
+        print("10. Salir")
 
         userChoise1 = input("Seleccione una opcion: ")
 
@@ -154,6 +156,19 @@ def mainMenu():
                     print("Opción no válida. Intente nuevamente.")
         
         elif userChoise1 == '9':
+            ano = int(input("Ingrese el año que desea analizar: "))
+            df = cargar_datos_pluviales(ano)
+            
+            print("\nAnalisis del año completo: ")
+            analizar_ano(df)
+            graficar_ano(df, ano)
+            
+            mes = input("\nIngrese el mes que desea analizar (Ejemplo: Enero): ")
+            print(f"\nAnálisis del mes de {mes}:")
+            analizar_mes(df, mes)
+            graficar_mes(df, mes, ano)
+        
+        elif userChoise1 == '10':
             print("Saliendo...")
             break
 
