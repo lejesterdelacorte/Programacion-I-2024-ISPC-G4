@@ -27,5 +27,5 @@ class gestionAccesos:
             print(f"Acceso registrado para {username}.")
         else:
             with open('logs.txt', 'a') as log_file:
-                log_file.write(f"Intento fallido: {username} - {datetime.now()} - Clave: {password}\n")
+                log_file.write(f"Intento fallido - username: {username} - {datetime.now()} - Clave: {password}\n")
 
