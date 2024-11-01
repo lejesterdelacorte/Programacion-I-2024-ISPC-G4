@@ -28,7 +28,8 @@ def mainMenu():
             username = input("Ingrese el username: ")
             password = input("Ingrese la password: ")
             email = input("Ingrese el E-mail: ")
-            userManager.addUser(username, password, email)
+            DNI = input("Ingrese el DNI: ")
+            userManager.addUser(username, password, email, DNI)
             sortedList = False  
 
         elif userChoise1 == '2':
@@ -82,6 +83,7 @@ def mainMenu():
                     accessManager.registerAccess(usuario, False, password)
             else:
                 print("Usuario no encontrado.")
+                accessManager.registerAccess(username, False)
 
         elif userChoise1 == '7':
             while True:

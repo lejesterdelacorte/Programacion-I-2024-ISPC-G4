@@ -1,22 +1,10 @@
-import pickle
 from claseUsuario import Usuario
+from gestionUsuarios import load_user, save_user
 
 class crudUsuarios:
     def __init__(self):
-        self.usuarios = self.loadUser()
+        self.usuarios = load_user('usuarios.ispc')
         self.contador_id = len(self.usuarios) + 1
-
-    def loadUser(self):
-        try:
-            with open('usuarios.ispc', 'rb') as file:
-                return pickle.load(file)
-        except FileNotFoundError:
-            return {}
-
-    def saveUser(self):
-        usuarios_ordenados = dict(sorted(self.usuarios.items(), key=lambda item: item[1].DNI))
-        with open('usuarios.ispc', 'wb') as file:
-            pickle.dump(usuarios_ordenados, file)
 
     def addUser(self, username, password, email, DNI):
         if username in self.usuarios or email in [user.email for user in self.usuarios.values()]:
@@ -25,7 +13,7 @@ class crudUsuarios:
         id = self.contador_id
         self.usuarios[id] = Usuario(id, DNI, username, password, email)
         self.contador_id += 1
-        self.saveUser()
+        save_user('usuarios.ispc', self.usuarios)
         print("Usuario agregado exitosamente.")
         return True
 
@@ -44,7 +32,7 @@ class crudUsuarios:
         if DNI:
             usuario.DNI = DNI 
         
-        self.saveUser()
+        save_user('usuarios.ispc', self.usuarios)
         print("Usuario modificado exitosamente.")
         return True
 
@@ -52,7 +40,7 @@ class crudUsuarios:
         for id, user in list(self.usuarios.items()):
             if user.username == identifier or user.email == identifier:
                 del self.usuarios[id]
-                self.saveUser()
+                save_user('usuarios.ispc', self.usuarios)
                 print("Usuario eliminado exitosamente.")
                 return True
         print("Usuario no encontrado.")
@@ -60,6 +48,7 @@ class crudUsuarios:
 
     def findUser(self, identifier):
         for user in self.usuarios.values():
+            print(user)
             if user.username == identifier or user.email == identifier:
                 return user
         return None

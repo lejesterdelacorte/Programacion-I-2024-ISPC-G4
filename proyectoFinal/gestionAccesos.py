@@ -19,12 +19,13 @@ class gestionAccesos:
 
     def registerAccess(self, usuario, success, password=None):
         fecha_ingreso = datetime.now()
-        acceso = Acceso(len(self.accesos) + 1, fecha_ingreso, None, usuario.username)
+        username = usuario.username if hasattr(usuario, 'username') else usuario
+        acceso = Acceso(len(self.accesos) + 1, fecha_ingreso, None, username)
         self.accesos.append(acceso)
         self.saveAccess()  
         if success:
-            print(f"Acceso registrado para {usuario.username}.")
+            print(f"Acceso registrado para {username}.")
         else:
             with open('logs.txt', 'a') as log_file:
-                log_file.write(f"Intento fallido: {usuario.username} - {datetime.now()} - Clave: {password}\n")
+                log_file.write(f"Intento fallido: {username} - {datetime.now()} - Clave: {password}\n")
 

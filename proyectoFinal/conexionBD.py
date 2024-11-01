@@ -16,4 +16,5 @@ def connectDb():
         return conexion
     except Error as e:
         print(f"Error al conectarse a MySQL: {e}")
+        print("Por favor, configure los datos de conexión en el archivo .env y pruebe nuevamente o vuelva al menú principal.")
         return None
