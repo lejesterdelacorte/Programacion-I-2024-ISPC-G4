@@ -1,7 +1,5 @@
 # Proyecto Final - ISPC - Módulo Innovación en Gestión de Datos
 
-## Segunda Evidencia.
-
 ### Integrantes
 1. Integrante 1:
 	- **Nombre:** Kuttel, Matías Agustín.
