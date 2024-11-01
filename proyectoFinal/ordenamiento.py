@@ -1,3 +1,4 @@
+import pickle
 def bubbleSort(usersList, key):
     n = len(usersList)
     for i in range(n):
@@ -8,5 +9,7 @@ def bubbleSort(usersList, key):
 
 def sortUsersPy(usersList):
     usersList.sort(key=lambda user: user.username)
+    with open('usuariosOrdenadosPorUsername.ispc', 'wb') as file:
+        pickle.dump(usersList, file)
     return usersList
 

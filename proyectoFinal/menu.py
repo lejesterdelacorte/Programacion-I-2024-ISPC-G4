@@ -14,13 +14,14 @@ def mainMenu():
         print("1. Agregar Usuario")
         print("2. Modificar Usuario")
         print("3. Eliminar Usuario")
-        print("4. Buscar Usuario")
+        print("4. Buscar Usuario por username")
         print("5. Mostrar todos los Usuarios")
         print("6. Ingresar al Sistema")
         print("7. Ordenamiento de usuarios")
         print("8. Conexión con base de datos de 'Sharing books'")
         print("9. Analisis de datos")
-        print("10. Salir")
+        print("10. Buscar usuario por dni")
+        print("11. Salir")
 
         userChoise1 = input("Seleccione una opcion: ")
 
@@ -97,7 +98,6 @@ def mainMenu():
                     usuarios_ordenados = userManager.usuarios.values()
                     usuarios_ordenados = bubbleSort(list(usuarios_ordenados))
                     userManager.usuarios = {user.id: user for user in usuarios_ordenados}
-                    userManager.saveUser()
                     sortedList = True
                     print("Usuarios ordenados por el algoritmo bubbleSort y guardados exitosamente.")
 
@@ -106,7 +106,6 @@ def mainMenu():
                     usuarios_ordenados = list(usuarios_ordenados)
                     sortUsersPy(usuarios_ordenados)
                     userManager.usuarios = {user.id: user for user in usuarios_ordenados}
-                    userManager.saveUser()
                     sortedList = True
                     print("Usuarios ordenados por método sort() y guardados con éxito.")
 
@@ -171,6 +170,14 @@ def mainMenu():
             graficar_mes(df, mes, ano)
         
         elif userChoise1 == '10':
+            dni = input("Ingrese el DNI a buscar: ")
+            usuario = userManager.findUserByDni(dni)
+            if usuario:
+                print(usuario, "se encontró el usuario por DNI, usando búsqueda binaria.")
+            else:
+                print("Usuario no encontrado.")
+        
+        elif userChoise1 == '11':
             print("Saliendo...")
             break
 
