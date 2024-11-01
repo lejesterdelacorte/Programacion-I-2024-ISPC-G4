@@ -14,21 +14,22 @@ class crudUsuarios:
             return {}
 
     def saveUser(self):
+        usuarios_ordenados = dict(sorted(self.usuarios.items(), key=lambda item: item[1].DNI))
         with open('usuarios.ispc', 'wb') as file:
-            pickle.dump(self.usuarios, file)
+            pickle.dump(usuarios_ordenados, file)
 
-    def addUser(self, username, password, email):
+    def addUser(self, username, password, email, DNI):
         if username in self.usuarios or email in [user.email for user in self.usuarios.values()]:
             print("El usuario o el email ya existen.")
             return False
         id = self.contador_id
-        self.usuarios[id] = Usuario(id, username, password, email)
+        self.usuarios[id] = Usuario(id, DNI, username, password, email)
         self.contador_id += 1
         self.saveUser()
         print("Usuario agregado exitosamente.")
         return True
 
-    def modifyUser(self, id, username, password, email):
+    def modifyUser(self, id, username=None, password=None, email=None, DNI=None):
         if id not in self.usuarios:
             print("Usuario no encontrado.")
             return False
@@ -40,6 +41,9 @@ class crudUsuarios:
             usuario.password = password
         if email:
             usuario.email = email
+        if DNI:
+            usuario.DNI = DNI 
+        
         self.saveUser()
         print("Usuario modificado exitosamente.")
         return True

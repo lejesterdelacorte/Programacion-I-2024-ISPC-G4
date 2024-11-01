@@ -29,9 +29,9 @@ class Usuario:
         return self.__email
 
     @id.setter
-    def id (self, newId):
+    def id(self, newId):
         self.__id = newId
-        
+
     @username.setter
     def username(self, newUsername):
         self.__username = newUsername
